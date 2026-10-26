@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Artiverse — Un universo de creatividad</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;800&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a0a12;--fg:#f5f3ff;--mu:#a9a6c4;--card:#15152a;--ln:#2a2a4a;--pu:#8b5cf6;--bl:#2f6bff;--pk:#ff4fa3;--yl:#ffd23f;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+:root[data-theme=light]{--bg:#faf8ff;--fg:#14122b;--mu:#5d5a7a;--card:#fff;--ln:#e0dcf2}
+*{box-sizing:border-box;margin:0}html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{background:var(--bg);color:var(--fg);font:16px/1.6 Inter,system-ui,sans-serif;transition:background .4s,color .4s;overflow-x:hidden}
+h1,h2,h3{font-family:Syne,Impact,sans-serif;line-height:1.1}
+.g{background:linear-gradient(90deg,var(--pu),var(--bl),var(--pk));-webkit-background-clip:text;background-clip:text;color:transparent}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;display:flex;gap:14px;align-items:center;padding:10px 4vw;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--ln)}
+.logo{font:800 20px Syne,sans-serif;white-space:nowrap}.links{display:flex;gap:4px;overflow-x:auto;flex:1;scrollbar-width:none}
+.links a{color:var(--mu);text-decoration:none;padding:6px 12px;border-radius:99px;font-size:14px;white-space:nowrap;transition:.25s}
+.links a:hover,.links a.on{background:var(--pu);color:#fff}
+#q{background:var(--card);border:1px solid var(--ln);color:var(--fg);padding:8px 14px;border-radius:99px;width:150px;font:inherit;font-size:14px}
+.ib{background:var(--card);border:1px solid var(--ln);color:var(--fg);border-radius:99px;padding:7px 12px;cursor:pointer;font-size:15px;transition:.25s}.ib:hover{transform:scale(1.1);border-color:var(--pk)}
+section{padding:90px 5vw 40px;max-width:1200px;margin:auto}
+.hd{margin-bottom:28px}.hd h2{font-size:clamp(30px,5vw,52px)}.hd p{color:var(--mu);max-width:640px;margin-top:8px}
+#inicio{max-width:none;min-height:92vh;display:grid;place-content:center;text-align:center;position:relative;overflow:hidden;padding:60px 6vw}
+.bl{position:absolute;border-radius:50%;filter:blur(70px);opacity:.55;animation:fl 14s ease-in-out infinite alternate;transition:transform .3s}
+.b1{width:46vmax;height:46vmax;background:var(--pu);left:-10%;top:-10%}.b2{width:38vmax;height:38vmax;background:var(--bl);right:-8%;bottom:-8%;animation-delay:-4s}.b3{width:22vmax;height:22vmax;background:var(--pk);left:45%;top:50%;animation-delay:-8s}
+@keyframes fl{to{translate:6vw -5vh;scale:1.2}}
+.sh{position:absolute;font-size:34px;animation:bob 6s ease-in-out infinite;opacity:.8}@keyframes bob{50%{translate:0 -24px;rotate:20deg}}
+#inicio>*:not(.bl):not(.sh){position:relative;z-index:2}
+#inicio h1{font-size:clamp(44px,10vw,120px);letter-spacing:-2px}#inicio p{font-size:clamp(17px,2.4vw,24px);color:var(--mu);margin:20px auto 34px;max-width:620px}
+.btn{border:0;cursor:pointer;color:#fff;font:600 16px Inter;padding:14px 28px;border-radius:99px;background:linear-gradient(90deg,var(--pu),var(--bl));box-shadow:0 8px 30px #8b5cf666;transition:.3s;position:relative;overflow:hidden}
+.btn:hover{transform:translateY(-3px) scale(1.04);box-shadow:0 12px 40px #2f6bff88}.btn:active{transform:scale(.94)}
+.btn.o{background:var(--card);color:var(--fg);border:1px solid var(--ln);box-shadow:none}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}.chip{background:var(--card);border:1px solid var(--ln);color:var(--fg);padding:8px 16px;border-radius:99px;cursor:pointer;font:inherit;font-size:14px;transition:.25s}
+.chip:hover{border-color:var(--pu)}.chip.on{background:var(--pu);border-color:var(--pu);color:#fff}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:18px}
+.card{background:var(--card);border:1px solid var(--ln);border-radius:18px;overflow:hidden;position:relative;cursor:pointer;transition:.35s}
+.card:hover{transform:translateY(-8px) rotate(-.6deg);box-shadow:0 20px 50px #8b5cf655;border-color:var(--pu)}
+.art{aspect-ratio:4/5;overflow:hidden}.art svg{width:100%;height:100%;display:block;transition:transform .6s}.card:hover .art svg{transform:scale(1.12)}
+.meta{padding:12px 14px}.meta h3{font-size:18px}.meta p{color:var(--mu);font-size:13px}
+.heart{position:absolute;top:10px;right:10px;border:0;background:#000a;color:#fff;width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:17px;transition:.25s}
+.heart:hover{transform:scale(1.2)}.heart.on{color:var(--pk);background:#fff;animation:pop .4s}@keyframes pop{50%{transform:scale(1.5)}}
+.empty{color:var(--mu);padding:30px 0}
+#modal{position:fixed;inset:0;z-index:50;background:#000d;display:none;place-items:center;padding:16px}#modal.on{display:grid;animation:fi .3s}
+@keyframes fi{from{opacity:0}}
+.mb{background:var(--card);border-radius:22px;max-width:880px;width:100%;max-height:92vh;overflow:auto;display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--ln)}
+.mb .art{aspect-ratio:auto;min-height:340px}.mb .tx{padding:28px;display:flex;flex-direction:column;gap:10px}.tag{color:var(--pk);font-weight:600;font-size:13px;text-transform:uppercase;letter-spacing:2px}
+@media(max-width:700px){.mb{grid-template-columns:1fr}.mb .art{min-height:300px}#q{width:100px}.logo{display:none}}
+.box{background:var(--card);border:1px solid var(--ln);border-radius:22px;padding:clamp(20px,4vw,40px)}
+.pb{height:6px;background:var(--ln);border-radius:9px;margin-bottom:20px}.pb i{display:block;height:100%;border-radius:9px;background:linear-gradient(90deg,var(--pu),var(--pk));transition:width .5s}
+.ops{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin-top:18px}
+.op{background:var(--bg);color:var(--fg);border:1px solid var(--ln);border-radius:14px;padding:16px;cursor:pointer;font:inherit;text-align:left;transition:.25s}.op:hover{border-color:var(--bl);transform:translateY(-3px);background:color-mix(in srgb,var(--bl) 14%,var(--bg))}
+.res{text-align:center}.res h3{font-size:clamp(32px,6vw,56px);margin:8px 0}.res ul{list-style:none;padding:0;margin:14px 0;display:flex;gap:8px;justify-content:center;flex-wrap:wrap}.res li{background:var(--bg);border:1px solid var(--ln);border-radius:99px;padding:6px 14px;font-size:14px}
+.tools{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:14px}
+.sw{width:30px;height:30px;border-radius:50%;border:3px solid transparent;cursor:pointer;transition:.2s}.sw:hover{transform:scale(1.2)}.sw.on{border-color:var(--fg)}
+#cv{width:100%;height:auto;aspect-ratio:8/5;background:#fff;border-radius:16px;touch-action:none;cursor:crosshair;box-shadow:0 10px 40px #0005}
+input[type=range]{accent-color:var(--pu)}input[type=color]{width:34px;height:34px;border:0;background:none;padding:0}
+.ag{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.ar{background:var(--card);border:1px solid var(--ln);border-radius:20px;overflow:hidden;transition:.35s}.ar:hover{transform:translateY(-6px);box-shadow:0 18px 50px #2f6bff44}
+.ar .art{aspect-ratio:16/9}.ar .in{padding:18px}.ar h3{font-size:24px}.ar small{color:var(--pk);font-weight:600}.ar p{color:var(--mu);font-size:14px;margin:8px 0}.ar li{font-size:14px;margin-left:18px}
+.pal{display:flex;height:14px;border-radius:9px;overflow:hidden;margin-top:12px}.pal i{flex:1}
+.ch{text-align:center}.ch h3{font-size:clamp(24px,4vw,40px);margin:12px 0 22px}.ch .em{font-size:60px;display:inline-block;animation:bob 4s infinite}
+.q{font:800 clamp(20px,3vw,30px) Syne;line-height:1.3}.qs{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.qc{border-radius:20px;padding:26px;color:#fff;min-height:170px;display:flex;flex-direction:column;justify-content:space-between;transition:.35s}.qc:hover{transform:scale(1.03) rotate(-1deg)}.qc span{opacity:.8;font-size:13px}
+.pls{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin:26px 0}.pl{background:var(--card);border:1px solid var(--ln);border-radius:16px;padding:12px}.pl .row{display:flex;height:70px;border-radius:10px;overflow:hidden}.pl .row b{flex:1;cursor:pointer;transition:flex .3s}.pl .row b:hover{flex:2.2}.pl p{font-size:13px;margin-top:8px;color:var(--mu)}
+#toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));translate:-50% 140px;background:linear-gradient(90deg,var(--pu),var(--pk));color:#fff;padding:14px 24px;border-radius:99px;font-weight:600;z-index:99;transition:translate .5s cubic-bezier(.2,1.5,.4,1);box-shadow:0 10px 40px #0007;max-width:92vw;text-align:center}#toast.on{translate:-50% 0}
+.rv{opacity:0;translate:0 40px;transition:opacity .8s,translate .8s}.rv.in{opacity:1;translate:0 0}
+footer{text-align:center;color:var(--mu);padding:60px 20px}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style></head><body>
+<nav><span class="logo g">Artiverse</span>
+<div class="links"><a href="#inicio">Inicio</a><a href="#galeria">Galería</a><a href="#estilo">Tu estilo</a><a href="#lienzo">Lienzo</a><a href="#artistas">Artistas</a><a href="#reto">Reto</a><a href="#muro">Inspiración</a></div>
+<input id="q" type="search" placeholder="Buscar…" aria-label="Buscar obras y artistas">
+<button class="ib" id="fv" title="Ver favoritas">♥ <span id="fc">0</span></button><button class="ib" id="th" title="Cambiar tema">☾</button></nav>
+
+<section id="inicio"><div class="bl b1"></div><div class="bl b2"></div><div class="bl b3"></div>
+<span class="sh" style="left:12%;top:22%">◆</span><span class="sh" style="right:14%;top:18%;animation-delay:-2s">●</span><span class="sh" style="left:20%;bottom:16%;animation-delay:-3s">▲</span><span class="sh" style="right:18%;bottom:22%;animation-delay:-1s">✦</span>
+<h1><span class="g">El arte</span><br>no tiene límites</h1>
+<p>Cada trazo es una puerta. Entra, mira, siente y crea: este universo es tuyo.</p>
+<div><button class="btn" id="go">Explorar el universo artístico</button></div></section>
+
+<section id="galeria"><div class="hd rv"><h2>Galería <span class="g">interactiva</span></h2><p>Obras originales generadas para Artiverse. Toca una para verla en grande y marca tus favoritas con ♥.</p></div>
+<div class="chips" id="chips"></div><div class="grid" id="grid"></div></section>
+
+<section id="estilo"><div class="hd rv"><h2>Descubre tu <span class="g">estilo artístico</span></h2><p>Cinco preguntas sobre tus gustos y emociones. Sin respuestas correctas.</p></div><div class="box rv" id="quiz"></div></section>
+
+<section id="lienzo"><div class="hd rv"><h2>Crea tu <span class="g">propia obra</span></h2><p>Dibuja con el mouse o con el dedo. Cuando termines, descárgala.</p></div>
+<div class="box rv"><div class="tools" id="tools"></div><canvas id="cv" width="800" height="500"></canvas></div></section>
+
+<section id="artistas"><div class="hd rv"><h2>Artistas y <span class="g">movimientos</span></h2><p>Cuatro mentes que cambiaron la forma de mirar el mundo.</p></div><div class="ag" id="ag"></div></section>
+
+<section id="reto"><div class="hd rv"><h2>Reto artístico <span class="g">del día</span></h2></div>
+<div class="box ch rv"><span class="em" id="rem">🎨</span><h3 id="rt"></h3><button class="btn" id="rd">¡Lo hice!</button> <button class="btn o" id="rn">Otro reto aleatorio</button><p style="color:var(--mu);margin-top:16px">Retos completados: <b id="rc">0</b></p></div></section>
+
+<section id="muro"><div class="hd rv"><h2>Muro de <span class="g">inspiración</span></h2><p>Frases, paletas (toca un color para copiarlo) e imágenes para encender ideas.</p></div>
+<div class="qs" id="qs"></div><div style="margin:20px 0"><button class="btn" id="gp">Generar paleta nueva</button> <button class="btn o" id="sq">Más frases</button></div>
+<div class="pls" id="pls"></div><div class="grid" id="ig"></div></section>
+
+<footer><b class="g" style="font:800 24px Syne">Artiverse</b><br>Un universo de creatividad · Hecho con color y curiosidad<br><small>© 2026 Angie Paola Mendoza Diaz. Todos los derechos reservados.</small></footer>
+
+<div id="modal"><div class="mb" id="mb"></div></div><div id="toast"></div>
+
+<script>
+const $=(s,e=document)=>e.querySelector(s),$$=(s,e=document)=>[...e.querySelectorAll(s)],
+norm=s=>s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase(),
+R=s=>{let x=s%2147483647;return()=>(x=x*16807%2147483647)/2147483647};
+let tt;function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('on'),2600)}
+
+/* Arte generativo (SVG) */
+function art(t,s){const r=R(s*7919+5),n=(a,b)=>(a+r()*(b-a)).toFixed(1),H=r()*360,
+c=(o=0,l=55,a=1)=>`hsla(${Math.round(H+o)%360},80%,${l}%,${a})`;let b='';
+if(t=='abs'){b=`<rect width=400 height=500 fill="${c(0,10)}"/>`;for(let i=0;i<14;i++){const o=n(0,300);b+=r()>.5?`<circle cx=${n(0,400)} cy=${n(0,500)} r=${n(20,120)} fill="${c(o,55,.75)}"/>`:`<rect x=${n(0,300)} y=${n(0,400)} width=${n(40,200)} height=${n(40,200)} fill="${c(o,50,.7)}" transform="rotate(${n(-40,40)} 200 250)"/>`}}
+else if(t=='sur'){b=`<defs><linearGradient id=s${s} x2=0 y2=1><stop offset=0 stop-color="${c(0,55)}"/><stop offset=1 stop-color="${c(70,80)}"/></linearGradient></defs><rect width=400 height=500 fill="url(#s${s})"/><circle cx=${n(100,300)} cy=130 r=60 fill="${c(180,85)}"/><rect y=330 width=400 height=170 fill="${c(240,16)}"/>`;
+for(let i=0;i<4;i++)b+=`<ellipse cx=${n(40,360)} cy=${n(380,460)} rx=${n(8,16)} ry=${n(50,110)} fill="${c(300,30,.9)}"/>`;
+b+=`<ellipse cx=200 cy=300 rx=90 ry=40 fill=#fff /><circle cx=200 cy=300 r=28 fill="${c(120,45)}"/><circle cx=200 cy=300 r=12 fill=#000 />`}
+else if(t=='pin'){b=`<defs><linearGradient id=p${s} x2=0 y2=1><stop offset=0 stop-color="${c(0,18)}"/><stop offset=1 stop-color="${c(40,50)}"/></linearGradient></defs><rect width=400 height=500 fill="url(#p${s})"/>`;
+for(let i=0;i<6;i++){const x=n(30,370),y=n(30,230);for(let k=1;k<5;k++)b+=`<circle cx=${x} cy=${y} r=${k*9} fill=none stroke="${c(60,70,.9)}" stroke-width=4 stroke-dasharray="${n(8,26)} 7"/>`}
+b+=`<path d="M0 390 Q100 ${n(310,350)} 200 390 T400 380 V500 H0Z" fill="${c(200,30)}"/><path d="M0 440 Q150 ${n(380,410)} 400 430 V500 H0Z" fill="${c(160,22)}"/><path d="M60 500 Q35 380 70 250 Q100 380 85 500Z" fill=#10231c />`}
+else if(t=='dib'){b=`<rect width=400 height=500 fill=#f4efe6 />`;for(let i=0;i<26;i++)b+=`<path d="M${n(20,380)} ${n(20,480)} C${n(0,400)} ${n(0,500)} ${n(0,400)} ${n(0,500)} ${n(20,380)} ${n(20,480)}" fill=none stroke="#23202b" stroke-width=${n(.6,2)} opacity=.8 />`;
+b+=`<circle cx=200 cy=250 r=${n(60,100)} fill=none stroke="${c(0,45)}" stroke-width=3 />`}
+else if(t=='fot'){b=`<defs><linearGradient id=f${s} x2=0 y2=1><stop offset=0 stop-color="${c(0,35)}"/><stop offset=1 stop-color="${c(40,75)}"/></linearGradient><radialGradient id=r${s}><stop offset=0 stop-color=#fff /><stop offset=1 stop-color=#fff0 /></radialGradient></defs><rect width=400 height=500 fill="url(#f${s})"/><circle cx=${n(100,300)} cy=250 r=110 fill="url(#r${s})"/>`;
+for(let L=0;L<3;L++){let y=300+L*55,d=`M0 500 L0 ${y}`;for(let x=40;x<=400;x+=40)d+=` L${x} ${y-n(10,90-L*20)}`;b+=`<path d="${d} V500Z" fill="${c(20,42-L*13,1)}"/>`}}
+else{b=`<defs><linearGradient id=d${s} x2=0 y2=1><stop offset=0 stop-color=#ffd23f /><stop offset=1 stop-color=#ff2d95 /></linearGradient></defs><rect width=400 height=500 fill=#0a0420 /><circle cx=200 cy=250 r=${n(90,120)} fill="url(#d${s})"/>`;
+for(let i=0;i<5;i++)b+=`<rect y=${230+i*20} width=400 height=${3+i*2} fill=#0a0420 />`;b+=`<rect y=300 width=400 height=200 fill=#150a35 />`;
+for(let i=-8;i<=8;i++)b+=`<line x1=${200+i*20} y1=300 x2=${200+i*95} y2=500 stroke=#2f6bff stroke-width=1.5 />`;for(let k=1;k<8;k++)b+=`<line x1=0 x2=400 y1=${300+k*k*4} y2=${300+k*k*4} stroke=#8b5cf6 />`}
+return`<svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice" role="img">${b}</svg>`}
+
+/* Datos */
+const CATS={all:'Todas',pin:'Pintura',dib:'Dibujo',fot:'Fotografía',dig:'Arte digital',sur:'Surrealismo',abs:'Arte abstracto'};
+const W=[
+['Tormenta de Cobalto','Inés Valverde','pin','Expresionismo','Capas de óleo azul que imitan un cielo a punto de romper en lluvia.'],
+['Noche en espiral','Mateo Rivas','pin','Postimpresionismo','Estrellas que giran en pinceladas cortas sobre colinas dormidas.'],
+['Trazos de insomnio','Lía Montenegro','dib','Dibujo a tinta','Líneas nerviosas que se enredan hasta formar un círculo de calma.'],
+['Cartografía de una mano','Bruno Ibáñez','dib','Línea contemporánea','Un mapa imaginario trazado con un solo bolígrafo.'],
+['Horizonte tibio','Camila Ortega','fot','Paisajismo','Montañas en capas bajo una luz dorada que se disuelve en la bruma.'],
+['Silencio de altura','Andrés Palacio','fot','Fotografía de naturaleza','Cumbres azules que parecen respirar al amanecer.'],
+['Neón y medianoche','Valeria Quintero','dig','Synthwave','Un sol retro sobre una cuadrícula infinita rumbo al futuro.'],
+['Autopista 2099','Kai Moreno','dig','Arte digital','Rejillas luminosas que prometen ciudades que aún no existen.'],
+['El ojo del desierto','Dora Salcedo','sur','Surrealismo','Un ojo gigante vigila un paisaje de sombras alargadas y luna roja.'],
+['Sueño con sombras','Emilio Zárate','sur','Surrealismo onírico','Figuras estiradas que cruzan un cielo imposible.'],
+['Colisión de colores','Nora Beltrán','abs','Abstracción geométrica','Círculos y rectángulos que chocan en un baile de transparencias.'],
+['Pulso interior','Tomás Lagos','abs','Abstracto emocional','Formas que laten al ritmo de una emoción sin nombre.']
+].map((a,i)=>({i,t:a[0],a:a[1],c:a[2],e:a[3],d:a[4]}));
+const ART=[
+{n:'Vincent van Gogh',y:'1853–1890 · Países Bajos',m:'Postimpresionismo',k:'pin',s:3,bio:'Pintó más de 800 óleos en apenas una década. Su pincelada gruesa y sus colores intensos buscaban transmitir emoción antes que realismo.',w:['La noche estrellada','Los girasoles','Campo de trigo con cuervos'],p:['#1d3b8b','#f2c230','#3e7c5a','#8ec5f2','#c9772b'],mv:'El Postimpresionismo parte del Impresionismo pero prioriza la expresión personal, la estructura y el simbolismo.'},
+{n:'Frida Kahlo',y:'1907–1954 · México',m:'Surrealismo / Arte mexicano',k:'sur',s:7,bio:'Convirtió su dolor y su identidad en autorretratos de una fuerza única. Decía: «Yo no pinto sueños, pinto mi propia realidad».',w:['Las dos Fridas','La columna rota','Autorretrato con collar de espinas'],p:['#c1272d','#1b6b4a','#f4a300','#2a1b3d','#e87fa3'],mv:'André Breton la llamó surrealista; ella rechazó la etiqueta. Su obra mezcla simbolismo, folclor mexicano y realismo íntimo.'},
+{n:'Pablo Picasso',y:'1881–1973 · España',m:'Cubismo',k:'abs',s:11,bio:'Cofundador del Cubismo junto a Georges Braque. Pasó por la época azul, la rosa y mil reinvenciones más.',w:['Las señoritas de Aviñón','Guernica','El viejo guitarrista'],p:['#27364f','#b08a5a','#d9d2c3','#6d8fa8','#111'],mv:'El Cubismo descompone los objetos en formas geométricas y muestra varios puntos de vista a la vez.'},
+{n:'Salvador Dalí',y:'1904–1989 · España',m:'Surrealismo',k:'sur',s:5,bio:'Excéntrico y genial, plasmó el mundo de los sueños con precisión casi fotográfica y su «método paranoico-crítico».',w:['La persistencia de la memoria','Cisnes que se reflejan como elefantes','Sueño causado por el vuelo de una abeja'],p:['#d9a441','#6aa5c9','#8a4b2a','#2c3a5e','#efe2c1'],mv:'El Surrealismo explora el inconsciente, los sueños y lo irracional para liberar la imaginación.'}];
+const STY={
+imp:['Impresionismo','Capturas la luz y el instante. Te enamoran los colores suaves, las pinceladas visibles y la atmósfera.',['Luz cambiante','Pincelada suelta','Escenas cotidianas'],'🌅'],
+sur:['Surrealismo','Tu mente es un teatro de sueños. Mezclas lo real con lo imposible y disfrutas del misterio.',['Sueños','Símbolos','Lo inesperado'],'👁️'],
+abs:['Arte abstracto','Sientes antes de explicar. Las formas, los colores y el ritmo expresan lo que las palabras no alcanzan.',['Formas libres','Color puro','Emoción sin figura'],'🌀'],
+pop:['Pop Art','Eres energía y color. Te inspira la cultura popular, los contrastes fuertes y el humor visual.',['Colores vibrantes','Cultura pop','Audacia'],'💥'],
+exp:['Expresionismo','Tu emoción manda. Deformas la realidad para mostrar lo que sientes con intensidad.',['Emoción cruda','Trazo intenso','Contraste dramático'],'🔥']};
+const QZ=[
+['¿Qué paisaje te atrae más?',[['Un lago al amanecer','imp'],['Un desierto con relojes derretidos','sur'],['Una ciudad de neones','pop'],['Una tormenta en el mar','exp']]],
+['¿Qué paleta elegirías?',[['Pasteles suaves','imp'],['Colores primarios puros','abs'],['Rosa, amarillo y cian eléctricos','pop'],['Rojos y negros profundos','exp']]],
+['¿Qué emoción quieres transmitir?',[['Calma','imp'],['Misterio','sur'],['Alegría explosiva','pop'],['Intensidad','exp']]],
+['¿Cómo prefieres crear?',[['Con pinceladas rápidas al aire libre','imp'],['Dejando fluir formas sin planear','abs'],['Con ideas locas e imposibles','sur'],['Con mucha fuerza y gestos amplios','exp']]],
+['¿Qué te inspira hoy?',[['La música','abs'],['Los sueños','sur'],['La publicidad y los cómics','pop'],['Mis sentimientos','exp']]]];
+const CH=[['Dibuja algo usando solo tres colores','🎨'],['Crea una obra inspirada en la alegría','😄'],['Dibuja tu sueño más extraño','🌙'],['Retrata un objeto cotidiano con formas geométricas','🔷'],['Pinta cómo suena tu canción favorita','🎵'],['Dibuja sin levantar el lápiz del lienzo','✏️'],['Crea un paisaje que solo exista en tu imaginación','🏔️'],['Representa la nostalgia usando solo tonos cálidos','🌇'],['Dibuja con la mano no dominante','🖐️'],['Haz un autorretrato abstracto de tu estado de ánimo','🪞']];
+const QU=[['Todo niño es un artista; el problema es seguir siéndolo al crecer.','Pablo Picasso'],['Si oyes una voz que dice «no puedes pintar», pinta, y esa voz se callará.','Vincent van Gogh'],['No tengas miedo de la perfección: nunca la alcanzarás.','Salvador Dalí'],['Pies, ¿para qué los quiero si tengo alas para volar?','Frida Kahlo'],['Los colores, como los rasgos, siguen los cambios de las emociones.','Pablo Picasso'],['La creatividad requiere el valor de soltar las certezas.','Erich Fromm'],['El arte lava del alma el polvo de la vida diaria.','Pablo Picasso'],['Pinto flores para que no mueran.','Frida Kahlo']];
+const PL=[['Atardecer eléctrico',['#2b0a5e','#8b5cf6','#2f6bff','#ff4fa3','#ffd23f']],['Bosque de noche',['#0b1d1a','#1f5c4a','#4a9c6d','#a8d5a2','#f2e8c9']],['Mar de Van Gogh',['#0f2557','#2f6bff','#8ec5f2','#f2c230','#c9772b']],['Frida viva',['#c1272d','#f4a300','#1b6b4a','#e87fa3','#2a1b3d']],['Pop total',['#ff2d95','#ffd23f','#00e5ff','#fff','#111']],['Desierto onírico',['#d9a441','#8a4b2a','#6aa5c9','#2c3a5e','#efe2c1']]];
+
+/* Favoritos y modal */
+const fav=new Set();let flt='all';
+function upFav(){$('#fc').textContent=fav.size}
+function tog(i){fav.has(i)?fav.delete(i):fav.add(i);upFav();rG();if(fav.has(i))toast('♥ «'+W[i].t+'» añadida a tus favoritas')}
+function rG(){const q=norm($('#q').value);
+const L=W.filter(w=>(flt=='all'||(flt=='fav'?fav.has(w.i):w.c==flt))&&norm(w.t+w.a+w.e+CATS[w.c]).includes(q));
+$('#grid').innerHTML=L.map(w=>`<article class="card" data-i="${w.i}"><div class="art">${art(w.c,w.i+1)}</div><div class="meta"><h3>${w.t}</h3><p>${w.a} · ${w.e}</p></div><button class="heart ${fav.has(w.i)?'on':''}" data-h="${w.i}" aria-label="Favorita">♥</button></article>`).join('')||'<p class="empty">No encontramos obras con esa búsqueda. Prueba otra palabra ✨</p>'}
+$('#chips').innerHTML=Object.entries(CATS).map(([k,v])=>`<button class="chip ${k=='all'?'on':''}" data-f="${k}">${v}</button>`).join('')+'<button class="chip" data-f="fav">♥ Mis favoritas</button>';
+function setF(f){flt=f;$$('.chip').forEach(c=>c.classList.toggle('on',c.dataset.f==f));rG()}
+$('#chips').onclick=e=>{const b=e.target.closest('.chip');if(b)setF(b.dataset.f)};
+$('#fv').onclick=()=>{setF('fav');$('#galeria').scrollIntoView();if(!fav.size)toast('Aún no tienes favoritas: toca ♥ en una obra')};
+$('#grid').onclick=e=>{const h=e.target.closest('.heart');if(h)return tog(+h.dataset.h);const c=e.target.closest('.card');if(c)openM(+c.dataset.i)};
+function openM(i){const w=W[i];$('#mb').innerHTML=`<div class="art">${art(w.c,i+1)}</div><div class="tx"><span class="tag">${CATS[w.c]}</span><h2>${w.t}</h2><p><b>Autor/a:</b> ${w.a}</p><p><b>Estilo:</b> ${w.e}</p><p style="color:var(--mu)">${w.d}</p><div style="margin-top:auto;display:flex;gap:8px;flex-wrap:wrap"><button class="btn" id="mf">${fav.has(i)?'♥ Quitar de favoritas':'♡ Marcar favorita'}</button><button class="btn o" id="mc">Cerrar</button></div></div>`;
+$('#modal').classList.add('on');$('#mf').onclick=()=>{tog(i);openM(i)};$('#mc').onclick=cl}
+const cl=()=>$('#modal').classList.remove('on');
+$('#modal').onclick=e=>{if(e.target.id=='modal')cl()};addEventListener('keydown',e=>{if(e.key=='Escape')cl()});
+
+/* Cuestionario */
+let qi=0,sc={};
+function rQ(){const b=$('#quiz');
+if(qi<QZ.length){const [t,o]=QZ[qi];b.innerHTML=`<div class="pb"><i style="width:${qi/QZ.length*100}%"></i></div><small style="color:var(--mu)">Pregunta ${qi+1} de ${QZ.length}</small><p class="q">${t}</p><div class="ops">${o.map(x=>`<button class="op" data-s="${x[1]}">${x[0]}</button>`).join('')}</div>`}
+else{const k=Object.keys(sc).sort((a,b)=>sc[b]-sc[a])[0],S=STY[k];b.innerHTML=`<div class="res"><div style="font-size:64px">${S[3]}</div><small style="color:var(--pk)">TU ESTILO ES</small><h3 class="g">${S[0]}</h3><p style="color:var(--mu);max-width:560px;margin:auto">${S[1]}</p><ul>${S[2].map(x=>`<li>${x}</li>`).join('')}</ul><button class="btn" id="qr">Repetir cuestionario</button></div>`;toast('🎉 ¡Descubriste tu estilo: '+S[0]+'!')}}
+$('#quiz').onclick=e=>{const o=e.target.closest('.op');if(o){sc[o.dataset.s]=(sc[o.dataset.s]||0)+1;qi++;rQ()}if(e.target.id=='qr'){qi=0;sc={};rQ()}};rQ();
+
+/* Lienzo */
+const cv=$('#cv'),cx=cv.getContext('2d');let col='#8b5cf6',sz=8,er=false,dr=false,strokes=0;
+cx.fillStyle='#fff';cx.fillRect(0,0,800,500);cx.lineCap=cx.lineJoin='round';
+const CO=['#111111','#8b5cf6','#2f6bff','#ff4fa3','#ffd23f','#22c55e','#ff7a00','#ffffff'];
+$('#tools').innerHTML=CO.map(c=>`<i class="sw ${c==col?'on':''}" data-c="${c}" style="background:${c};border-color:${c==col?'var(--fg)':'var(--ln)'}"></i>`).join('')+`<input type=color id=pc value="${col}" aria-label="Color personalizado"><label>Pincel <input type=range id=ps min=1 max=60 value=8></label><button class="chip" id="eb">Borrador</button><button class="chip" id="cc">Limpiar</button><button class="btn" id="dl" style="padding:9px 20px">⬇ Descargar</button>`;
+function sc2(c){col=c;er=false;$('#eb').classList.remove('on');$$('.sw').forEach(s=>s.classList.toggle('on',s.dataset.c==c));$$('.sw').forEach(s=>s.style.borderColor=s.dataset.c==c?'var(--fg)':'var(--ln)')}
+$('#tools').onclick=e=>{const s=e.target.closest('.sw');if(s)sc2(s.dataset.c)};
+$('#pc').oninput=e=>sc2(e.target.value);$('#ps').oninput=e=>sz=+e.target.value;
+$('#eb').onclick=e=>{er=!er;e.target.classList.toggle('on',er)};
+$('#cc').onclick=()=>{cx.fillStyle='#fff';cx.fillRect(0,0,800,500);toast('🧼 Lienzo limpio, ¡a empezar de nuevo!')};
+$('#dl').onclick=()=>{const a=document.createElement('a');a.download='mi-obra-artiverse.png';a.href=cv.toDataURL('image/png');a.click();toast('🖼️ ¡Tu obra se descargó! Eres artista.')};
+const pt=e=>{const r=cv.getBoundingClientRect();return[(e.clientX-r.left)*800/r.width,(e.clientY-r.top)*500/r.height]};
+cv.onpointerdown=e=>{dr=true;cv.setPointerCapture(e.pointerId);const[x,y]=pt(e);cx.strokeStyle=er?'#fff':col;cx.lineWidth=sz;cx.beginPath();cx.moveTo(x,y);cx.lineTo(x+.01,y+.01);cx.stroke()};
+cv.onpointermove=e=>{if(!dr)return;const[x,y]=pt(e);cx.lineTo(x,y);cx.stroke()};
+cv.onpointerup=()=>{if(dr&&++strokes==10)toast('✨ ¡10 trazos! Tu obra va tomando forma');dr=false};
+
+/* Artistas */
+function rA(){const q=norm($('#q').value);
+$('#ag').innerHTML=ART.filter(a=>norm(a.n+a.m+a.w.join(' ')).includes(q)).map(a=>`<article class="ar rv in"><div class="art">${art(a.k,a.s)}</div><div class="in"><small>${a.m}</small><h3>${a.n}</h3><p>${a.y}</p><p>${a.bio}</p><ul>${a.w.map(w=>`<li>${w}</li>`).join('')}</ul><p><b>Movimiento:</b> ${a.mv}</p><div class="pal">${a.p.map(c=>`<i style="background:${c}"></i>`).join('')}</div></div></article>`).join('')||'<p class="empty">Ningún artista coincide con tu búsqueda.</p>'}
+$('#q').oninput=()=>{rG();rA();if(norm($('#q').value)&&!$('#q').dataset.s){}};
+
+/* Reto */
+let rn=new Date().getDate()%CH.length,done=0;
+function rR(){$('#rt').textContent=CH[rn][0];$('#rem').textContent=CH[rn][1]}
+$('#rn').onclick=()=>{let n;do n=Math.floor(Math.random()*CH.length);while(n==rn);rn=n;rR()};
+$('#rd').onclick=()=>{$('#rc').textContent=++done;toast('🏆 ¡Reto completado! Ya llevas '+done)};rR();
+
+/* Muro */
+let qo=0;function rW(){$('#qs').innerHTML=[0,1,2].map(k=>{const [t,a]=QU[(qo+k)%QU.length],g=['#8b5cf6,#2f6bff','#ff4fa3,#8b5cf6','#2f6bff,#00b8d9'][k];return`<div class="qc" style="background:linear-gradient(135deg,${g})"><p class="q">«${t}»</p><span>— ${a}</span></div>`}).join('')}
+$('#sq').onclick=()=>{qo+=3;rW()};rW();
+function rP(extra){const L=extra?[extra,...PL]:PL;$('#pls').innerHTML=L.map(p=>`<div class="pl"><div class="row">${p[1].map(c=>`<b data-c="${c}" style="background:${c}" title="${c}"></b>`).join('')}</div><p>${p[0]}</p></div>`).join('')}
+let ex=null;rP();
+$('#gp').onclick=()=>{const h=Math.random()*360,l=[20,38,55,72,88];ex=['Paleta aleatoria',l.map((x,i)=>`hsl(${Math.round(h+i*(20+Math.random()*30))%360} 80% ${x}%)`)];rP(ex);toast('🎲 ¡Paleta nueva generada!')};
+$('#pls').onclick=e=>{const b=e.target.closest('b');if(!b)return;const c=b.dataset.c;try{navigator.clipboard.writeText(c)}catch(_){}toast('🎨 Color '+c+' copiado')};
+$('#ig').innerHTML=[['pin',21],['abs',22],['dig',23],['sur',24],['fot',25],['dib',26]].map(a=>`<div class="card"><div class="art">${art(a[0],a[1])}</div></div>`).join('');
+
+/* Tema, navegación, scroll */
+const TH=$('#th'),root=document.documentElement;
+function setT(t){root.dataset.theme=t;TH.textContent=t=='dark'?'☾':'☀'}
+setT(matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');
+TH.onclick=()=>{setT(root.dataset.theme=='dark'?'light':'dark');toast('Modo '+(root.dataset.theme=='dark'?'oscuro':'claro')+' activado')};
+$('#go').onclick=()=>$('#galeria').scrollIntoView();
+addEventListener('mousemove',e=>$$('.bl').forEach((b,i)=>b.style.transform=`translate(${(e.clientX/innerWidth-.5)*30*(i+1)}px,${(e.clientY/innerHeight-.5)*30*(i+1)}px)`));
+const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}}),{threshold:.12});
+$$('.rv').forEach(e=>io.observe(e));
+const so=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting)$$('.links a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')=='#'+x.target.id))}),{rootMargin:'-45% 0px -50%'});
+$$('section').forEach(s=>so.observe(s));
+rG();rA();
+</script></body></html>
